@@ -11,10 +11,9 @@ function createCustomElement(element, className, innerText) {
   e.innerText = innerText;
   return e;
 }
-
+// Requisito 3 - Remover o item clicado no carrinho.
 function cartItemClickListener(event) {
-  // coloque seu código aqui
-  console.log(event);  
+  event.target.remove();
 }
 
 // Funçao de adicionar ao carrinho
