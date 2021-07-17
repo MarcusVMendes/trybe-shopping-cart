@@ -16,6 +16,15 @@ function cartItemClickListener(event) {
   event.target.remove();
 }
 
+// Requisito 6 - Criar o botao para limpar carrinho
+document.querySelector('.empty-cart')
+  .addEventListener('click', () => {
+    const cartItens = document.querySelectorAll('.cart__item');
+      cartItens.forEach((item) => {
+        item.remove();
+      });
+  });
+
 // Funçao de adicionar ao carrinho
 function createCartItemElement({ id: sku, title: name, price: salePrice }) {
   const li = document.createElement('li');
