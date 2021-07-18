@@ -56,7 +56,7 @@ const fetchProductsByID = async (event) => {
   const object = await response.json();
   const cart = document.querySelector('.cart__items');
   cart.appendChild(createCartItemElement(object));
-  saveCart();
+  saveCart(); // Credito: ajuda do Felipe Guto para compreender o raciocinio do save do LocalStorage.
 };
 
 // Função que cria cada section de itens
@@ -96,7 +96,7 @@ const fetchProducts = async (product) => {
   const object = await response.json();
   objectProduct(object);
   const element = document.querySelector('.loading');
-  element.remove();
+  element.remove(); // Crédito: Felipe Guto por ajudar a compreender o raciocinio por meio do erro no teste do cypress. 
 };
 //
 
@@ -104,3 +104,6 @@ window.onload = () => {
   fetchProducts('computador');
   loadCart();
 };
+
+// remove() para remover o elemento https://www.w3schools.com/jsref/met_element_remove.asp
+// .target para indicar qual o elemento clicado https://www.w3schools.com/tags/att_a_target.asp
