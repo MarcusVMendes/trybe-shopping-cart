@@ -11,6 +11,20 @@ function createCustomElement(element, className, innerText) {
   e.innerText = innerText;
   return e;
 }
+
+// Requisito 4 - LocalStorage
+const cartList = document.querySelector('.cart__items');
+
+const saveCart = () => {
+  localStorage.setItem('Cart', cartList.innerHTML);
+};
+saveCart();
+
+const loadCart = () => {
+  cartList.innerHTML = localStorage.getItem('Cart');
+  console.log(cartList);
+};
+
 // Requisito 3 - Remover o item clicado no carrinho.
 function cartItemClickListener(event) {
   event.target.remove();
@@ -82,9 +96,12 @@ const fetchProducts = async (product) => {
   const response = await fetch(url);
   const object = await response.json();
   objectProduct(object);
+  const element = document.querySelector('.loading');
+  element.remove();
 };
 //
 
 window.onload = () => { 
   fetchProducts('computador');
+  loadCart();
 };
