@@ -18,7 +18,6 @@ const cartList = document.querySelector('.cart__items');
 const saveCart = () => {
   localStorage.setItem('Cart', cartList.innerHTML);
 };
-saveCart();
 
 const loadCart = () => {
   cartList.innerHTML = localStorage.getItem('Cart');
@@ -39,7 +38,7 @@ document.querySelector('.empty-cart')
       });
   });
 
-// Funçao de adicionar ao carrinho
+// Criação do elemento do carrinho
 function createCartItemElement({ id: sku, title: name, price: salePrice }) {
   const li = document.createElement('li');
   li.className = 'cart__item';
@@ -56,8 +55,8 @@ const fetchProductsByID = async (event) => {
   const response = await fetch(url);
   const object = await response.json();
   const cart = document.querySelector('.cart__items');
-  
-  return cart.appendChild(createCartItemElement(object));
+  cart.appendChild(createCartItemElement(object));
+  saveCart();
 };
 
 // Função que cria cada section de itens
